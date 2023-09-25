@@ -23,13 +23,12 @@ const CityMeteo = lazy(() => import("./Pages/CityMeteo/CityMeteo"));
 const CityForecast = lazy(() => import("./Pages/CityForecast/CityForecast"));
 
 function App() {
-  const [theme, setTheme] = useState("warm");
-
+  const [theme, setTheme] = useState<"warm" | "cold">("warm");
   useEffect(() => {
     const localTheme = window.localStorage.getItem("theme");
 
     if (localTheme) {
-      setTheme(localTheme);
+      setTheme(localTheme as "warm" | "cold");
     } else {
       setTheme("warm");
       window.localStorage.setItem("theme", "warm");

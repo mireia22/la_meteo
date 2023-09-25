@@ -6,7 +6,10 @@ import {
   ForecastSingleDayWrp,
 } from "../ForecastResumeTemplate/ForecastResumeTemplate-styles";
 import { useNavigate } from "react-router-dom";
-import { useWeatherDataContext } from "../../Context/WeatherDataContext";
+import {
+  WeatherContextType,
+  useWeatherDataContext,
+} from "../../Context/WeatherDataContext";
 import { CustomBtn } from "../../Components/CustomButton/CustomButton-styles";
 
 type ForecastData = {
@@ -19,9 +22,13 @@ type ForecastData = {
 type GroupedForecastData = {
   [date: string]: ForecastData[];
 };
-const ForecastResumeTemplate = ({ forecastData }) => {
+const ForecastResumeTemplate = ({
+  forecastData,
+}: {
+  forecastData: ForecastData[];
+}) => {
   const groupedForecastData: GroupedForecastData = {};
-  const { selectedLocation } = useWeatherDataContext();
+  const { selectedLocation } = useWeatherDataContext() as WeatherContextType;
 
   for (const forecastItem of forecastData) {
     const date = new Date(forecastItem.day ?? "");
@@ -31,14 +38,14 @@ const ForecastResumeTemplate = ({ forecastData }) => {
     }
     groupedForecastData[formattedDate].push(forecastItem);
   }
-
   const toCelsius = (kelvin: number | null) =>
     ((kelvin ?? 0) - 273.15).toFixed(1) + "°";
 
   const forecastData12h = forecastData.filter(
     (forecastItem: ForecastData) =>
-      new Date(forecastItem.time).getHours() === 12
+      new Date(forecastItem.time ?? "").getHours() === 12
   );
+
   const navigate = useNavigate();
 
   const goToForecastDate = () => {

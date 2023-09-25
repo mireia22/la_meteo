@@ -4,7 +4,17 @@ import {
   MinMaxTempWrp,
 } from "./MeteoTemplate-styles";
 
-const MeteoTemplate = ({ weatherData }) => {
+type WeatherData = {
+  cityName: string | null;
+  weatherDescription: string | null;
+  windSpeed: number | null;
+  weatherIcon: string | null;
+  temperature: number | null;
+  temp_max: number | null;
+  temp_min: number | null;
+};
+
+const MeteoTemplate = ({ weatherData }: { weatherData: WeatherData }) => {
   const toCelsius = (kelvin: number) => (kelvin - 273.15).toFixed(1) + "°";
 
   return (

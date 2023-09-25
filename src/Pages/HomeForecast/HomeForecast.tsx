@@ -1,8 +1,11 @@
 import ForecastTemplate from "../../Templates/ForecastTemplate/ForecastTemplate";
-import { useWeatherDataContext } from "../../Context/WeatherDataContext";
+import {
+  WeatherContextType,
+  useWeatherDataContext,
+} from "../../Context/WeatherDataContext";
 
 const HomeForecast = () => {
-  const { forecastData } = useWeatherDataContext();
+  const { forecastData } = useWeatherDataContext() as WeatherContextType;
 
   return (
     <div>

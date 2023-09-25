@@ -9,8 +9,19 @@ import {
 import { CustomBtn } from "../../Components/CustomButton/CustomButton-styles";
 import { useNavigate, useParams } from "react-router-dom";
 
-const ForecastTemplate = ({ forecastData }) => {
-  const groupedForecastData = {};
+type ForecastData = {
+  day: string | null;
+  time: string | null;
+  weatherIcon: string | null;
+  temperature: number | null;
+};
+
+const ForecastTemplate = ({
+  forecastData,
+}: {
+  forecastData: ForecastData[];
+}) => {
+  const groupedForecastData: { [formattedDate: string]: ForecastData[] } = {};
 
   const groupForecastDataByDate = () => {
     for (const forecastItem of forecastData) {
@@ -23,7 +34,8 @@ const ForecastTemplate = ({ forecastData }) => {
     }
   };
 
-  const toCelsius = (kelvin) => ((kelvin ?? 0) - 273.15).toFixed(1) + " °";
+  const toCelsius = (kelvin: number) =>
+    ((kelvin ?? 0) - 273.15).toFixed(1) + " °";
   const navigate = useNavigate();
   const { name } = useParams();
 
@@ -54,13 +66,18 @@ const ForecastTemplate = ({ forecastData }) => {
                 );
                 return hour !== 6 && hour !== 3 && hour !== 12;
               })
-              .map((forecastItem, index, filteredData) => {
+              .map((forecastItem, index: number, filteredData) => {
+                // Filter out null values
+                const filteredTemperatures = filteredData
+                  .map((item) => item.temperature)
+                  .filter((temp) => temp !== null) as number[];
+
                 const isHighestTemp =
                   forecastItem.temperature ===
-                  Math.max(...filteredData.map((item) => item.temperature));
+                  Math.max(...filteredTemperatures);
                 const isLowestTemp =
                   forecastItem.temperature ===
-                  Math.min(...filteredData.map((item) => item.temperature));
+                  Math.min(...filteredTemperatures);
 
                 return (
                   <SingleHourForecast
@@ -83,7 +100,7 @@ const ForecastTemplate = ({ forecastData }) => {
                         />
                       )}
                     </ForecastImgWrp>
-                    <p>{toCelsius(forecastItem.temperature)}</p>
+                    <p>{toCelsius(forecastItem.temperature ?? 0)}</p>
                   </SingleHourForecast>
                 );
               })}

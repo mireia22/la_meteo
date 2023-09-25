@@ -2,9 +2,10 @@ import MeteoTemplate from "../../Templates/MeteoTemplate/MeteoTemplate";
 import { useWeatherDataContext } from "../../Context/WeatherDataContext";
 import ForecastResumeTemplate from "../../Templates/ForecastResumeTemplate/ForecastResumeTemplate";
 import { SelectAndBtnWrp } from "./CityMeteo-styles";
-
+import { WeatherContextType } from "../../Context/WeatherDataContext";
 const CityMeteo = () => {
-  const { weatherData, forecastData } = useWeatherDataContext();
+  const { weatherData, forecastData } =
+    useWeatherDataContext() as WeatherContextType;
 
   return (
     <div>

@@ -37,6 +37,18 @@ type ForecastData = {
   temperature: number | null;
 };
 
+type ForecastItem = {
+  dt_txt: string | null;
+  main: {
+    temp: number | null;
+  } | null;
+  weather:
+    | {
+        description: string | null;
+      }[]
+    | null;
+};
+
 type SelectedLocation = {
   lat: number;
   lon: number;
@@ -44,7 +56,7 @@ type SelectedLocation = {
   name: string;
 };
 
-type WeatherContextType = {
+export type WeatherContextType = {
   location: Location;
   setLocation: React.Dispatch<React.SetStateAction<Location>>;
   selectedLocation: SelectedLocation | null;
@@ -124,12 +136,16 @@ export const WeatherDataProvider = ({ children }: WeatherProps) => {
           }));
           //FORECAST DATA
         } else if (dataType === "forecast") {
-          const forecastItems = data.list?.map((forecastItem) => ({
-            time: forecastItem.dt_txt,
-            day: forecastItem.dt_txt,
-            temperature: forecastItem.main?.temp,
-            weatherIcon: getWeatherIcon(forecastItem.weather?.[0]?.description),
-          }));
+          const forecastItems = data.list?.map(
+            (forecastItem: ForecastItem) => ({
+              time: forecastItem.dt_txt,
+              day: forecastItem.dt_txt,
+              temperature: forecastItem.main?.temp,
+              weatherIcon: getWeatherIcon(
+                forecastItem.weather?.[0]?.description ?? ""
+              ),
+            })
+          );
           setForecastData(forecastItems || []);
         }
 

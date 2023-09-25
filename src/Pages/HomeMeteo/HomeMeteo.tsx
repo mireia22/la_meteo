@@ -1,10 +1,15 @@
 import MeteoTemplate from "../../Templates/MeteoTemplate/MeteoTemplate";
-import { useWeatherDataContext } from "../../Context/WeatherDataContext";
+import {
+  WeatherContextType,
+  useWeatherDataContext,
+} from "../../Context/WeatherDataContext";
 import ForecastResumeTemplate from "../../Templates/ForecastResumeTemplate/ForecastResumeTemplate";
 import Loader from "../../Components/Loader/Loader";
 import { MeteoWrp } from "./HomeMeteo-styles";
+
 const HomeMeteo = () => {
-  const { weatherData, forecastData, loading } = useWeatherDataContext();
+  const { weatherData, forecastData, loading } =
+    useWeatherDataContext() as WeatherContextType;
 
   return (
     <MeteoWrp>
