@@ -65,7 +65,7 @@ export type WeatherContextType = {
   >;
   weatherData: WeatherData;
   setWeatherData: React.Dispatch<React.SetStateAction<WeatherData>>;
-  forecastData: ForecastData[]; // You have defined forecastData here
+  forecastData: ForecastData[];
   setForecastData: React.Dispatch<React.SetStateAction<ForecastData[]>>;
   fetchData: (url: string, dataType: "meteo" | "forecast") => Promise<void>;
   apiKey: string;
