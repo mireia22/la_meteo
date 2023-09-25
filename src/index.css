@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@300;500;700;800&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
+
+:root {
+  --font: #f8fbfd;
+  --warm-dark: rgb(103, 16, 65);
+  --warm-medium: rgb(198, 40, 56);
+  --warm-bright: #8f495f;
+  font-family: "Dosis", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--font);
+}
