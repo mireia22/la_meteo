@@ -26,8 +26,8 @@ import {
 } from "../Types/WeatherTypes";
 
 //CONSTANTS
-const apiKey = import.meta.env.VITE_API_KEY;
-export const API_BASE_URL = "https://api.openweathermap.org/data/2.5";
+const API_KEY = import.meta.env.VITE_API_KEY;
+const API_BASE_URL = "https://api.openweathermap.org/data/2.5";
 
 //CONTEXT
 export const WeatherDataContext = createContext<WeatherContextType | null>(
@@ -137,9 +137,9 @@ export const WeatherDataProvider = ({ children }: WeatherProps) => {
     if (lat !== null && lon !== null) {
       let apiUrl;
       if (selectedLocation) {
-        apiUrl = `${API_BASE_URL}/weather?lat=${selectedLocation.lat}&lon=${selectedLocation.lon}&appid=${apiKey}`;
+        apiUrl = `${API_BASE_URL}/weather?lat=${selectedLocation.lat}&lon=${selectedLocation.lon}&appid=${API_KEY}`;
       } else {
-        apiUrl = `${API_BASE_URL}/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+        apiUrl = `${API_BASE_URL}/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}`;
       }
       if (apiUrl) {
         fetchData(apiUrl, "meteo");
@@ -153,9 +153,9 @@ export const WeatherDataProvider = ({ children }: WeatherProps) => {
     if (lat !== null && lon !== null) {
       let apiUrl;
       if (selectedLocation) {
-        apiUrl = `${API_BASE_URL}/forecast/?lat=${selectedLocation.lat}&lon=${selectedLocation.lon}&appid=${apiKey}`;
+        apiUrl = `${API_BASE_URL}/forecast/?lat=${selectedLocation.lat}&lon=${selectedLocation.lon}&appid=${API_KEY}`;
       } else {
-        apiUrl = `${API_BASE_URL}/forecast/?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+        apiUrl = `${API_BASE_URL}/forecast/?lat=${lat}&lon=${lon}&appid=${API_KEY}`;
       }
       if (apiUrl) {
         fetchData(apiUrl, "forecast");
@@ -189,7 +189,6 @@ export const WeatherDataProvider = ({ children }: WeatherProps) => {
     forecastData,
     setForecastData,
     fetchData,
-    apiKey,
     loading,
     groupedForecastData,
   };

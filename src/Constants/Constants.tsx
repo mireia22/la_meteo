@@ -1,8 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
 
-export const apiKey = import.meta.env.VITE_API_KEY;
-export const API_BASE_URL = "https://api.openweathermap.org/data/2.5";
-
 export const WEATHER_ICONS = [
   {
     weatherDescription: "clear sky",

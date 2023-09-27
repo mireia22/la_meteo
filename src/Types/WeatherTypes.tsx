@@ -75,7 +75,6 @@ export type WeatherContextType = {
   forecastData: ForecastData[];
   setForecastData: React.Dispatch<React.SetStateAction<ForecastData[]>>;
   fetchData: (url: string, dataType: "meteo" | "forecast") => Promise<void>;
-  apiKey: string;
   loading: boolean;
   groupedForecastData: GroupedForecastData;
 };
