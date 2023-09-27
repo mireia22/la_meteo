@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { CITIES_ARRAY } from "../../Constants/Constants";
 import { Select, Option } from "../SelectCities/SelectCities-styles";
-import { SelectedLocation } from "../../Context/WeatherDataContext";
+import { SelectedLocation } from "../../Types/WeatherTypes";
 
 type CitiesSelectProps = {
   onLocationChange: (location: SelectedLocation) => void;

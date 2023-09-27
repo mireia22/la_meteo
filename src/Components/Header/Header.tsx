@@ -2,7 +2,7 @@ import { useWeatherDataContext } from "../../Context/WeatherDataContext";
 import { useNavigate } from "react-router-dom";
 import SelectCities from "../SelectCities/SelectCities";
 import { HeaderWrp } from "./Header-styles";
-import { WeatherContextType } from "../../Context/WeatherDataContext";
+import { WeatherContextType } from "../../Types/WeatherTypes";
 const Header = () => {
   const { setSelectedLocation } = useWeatherDataContext() as WeatherContextType;
   const navigate = useNavigate();

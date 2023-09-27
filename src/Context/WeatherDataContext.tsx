@@ -51,6 +51,7 @@ export const WeatherDataProvider = ({ children }: WeatherProps) => {
     useState<SelectedLocation | null>(null);
   const [forecastData, setForecastData] = useState<ForecastData[]>([]);
   const [loading, setLoading] = useState(true);
+
   //GET SPECIFIC ICONS
   const getWeatherIcon = (description: string) => {
     const matchingIcon = WEATHER_ICONS.find(
