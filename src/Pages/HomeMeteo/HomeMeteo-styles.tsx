@@ -12,7 +12,7 @@ export const MeteoWrp = styled.section`
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
     justify-items: center;
-    gap: 2.5rem;
+    gap: 2rem;
   }
 `;
 

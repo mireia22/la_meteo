@@ -24,7 +24,7 @@ export const ForecastDaysWrp = styled.div`
 `;
 
 export const ForecastSingleDayWrp = styled.li`
-  background-color: rgba(78, 10, 48, 0.6);
+  background-color: rgba(78, 10, 48, 0.7);
   padding: 0.4rem;
   border-radius: 10px;
   display: flex;
@@ -32,6 +32,7 @@ export const ForecastSingleDayWrp = styled.li`
   align-items: center;
   justify-content: center;
   @media (min-width: 768px) {
+    font-size: 1.5rem;
     display: flex;
     flex-direction: row;
     justify-content: space-around;

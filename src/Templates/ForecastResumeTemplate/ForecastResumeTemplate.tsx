@@ -5,9 +5,7 @@ import {
   ForecastDaysWrp,
   ForecastSingleDayWrp,
 } from "../ForecastResumeTemplate/ForecastResumeTemplate-styles";
-import { useNavigate } from "react-router-dom";
 import { useWeatherDataContext } from "../../Context/WeatherDataContext";
-import { CustomBtn } from "../../Components/CustomButton/CustomButton-styles";
 import { WeatherContextType } from "../../Types/WeatherTypes";
 import useTemperatureConversion from "../../Hooks/useTemperatureConversion";
 

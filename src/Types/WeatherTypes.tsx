@@ -64,17 +64,11 @@ export type SelectedLocation = {
 };
 
 export type WeatherContextType = {
-  location: Location;
-  setLocation: React.Dispatch<React.SetStateAction<Location>>;
   selectedLocation: SelectedLocation | null;
   setSelectedLocation: React.Dispatch<
     React.SetStateAction<SelectedLocation | null>
   >;
   weatherData: WeatherData;
-  setWeatherData: React.Dispatch<React.SetStateAction<WeatherData>>;
   forecastData: ForecastData[];
-  setForecastData: React.Dispatch<React.SetStateAction<ForecastData[]>>;
-  fetchData: (url: string, dataType: "meteo" | "forecast") => Promise<void>;
-  loading: boolean;
   groupedForecastData: GroupedForecastData;
 };

@@ -181,16 +181,10 @@ export const WeatherDataProvider = ({ children }: WeatherProps) => {
 
   //SHARED STATE
   const sharedState = {
-    location,
-    setLocation,
     selectedLocation,
     setSelectedLocation,
     weatherData,
-    setWeatherData,
     forecastData,
-    setForecastData,
-    fetchData,
-    loading,
     groupedForecastData,
   };
 

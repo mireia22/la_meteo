@@ -48,11 +48,8 @@ const App = () => {
               <Routes>
                 <Route path="/" element={<HomeMeteo />} />
                 <Route path="/forecast" element={<Forecast />} />
-                <Route path="/city-meteo/:name" element={<HomeMeteo />} />
-                <Route
-                  path="/city-meteo/:name/forecast"
-                  element={<Forecast />}
-                />
+                <Route path="/:name" element={<HomeMeteo />} />
+                <Route path="/:name/forecast" element={<Forecast />} />
               </Routes>
             </Suspense>
           </MainWrp>

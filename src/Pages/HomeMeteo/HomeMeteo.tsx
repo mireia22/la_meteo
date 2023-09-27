@@ -14,9 +14,9 @@ const HomeMeteo = () => {
   const goToForecastDate = () => {
     if (selectedLocation) {
       const name = selectedLocation.name;
-      navigate(`/city-meteo/${name}/forecast`);
+      navigate(`/${name}/forecast`);
     } else {
-      navigate("/homeforecast");
+      navigate("/forecast");
     }
   };
 

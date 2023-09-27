@@ -8,14 +8,9 @@ type ThemeSwitchProps = {
   toggleTheme: () => void;
 };
 const ThemeSwitch: React.FC<ThemeSwitchProps> = ({
-  currentTheme,
+  currentTheme = { imageSrc: "", altText: "" },
   toggleTheme,
 }) => {
-  // Check if currentTheme is falsy (null or undefined).
-  if (!currentTheme) {
-    return null;
-  }
-
   const { imageSrc, altText } = currentTheme;
 
   return (

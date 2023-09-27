@@ -16,7 +16,7 @@ const ForecastTemplate = () => {
 
   const returnToHome = () => {
     if (name) {
-      navigate(`/city-meteo/${name}`);
+      navigate(`/${name}`);
     } else {
       navigate("/");
     }

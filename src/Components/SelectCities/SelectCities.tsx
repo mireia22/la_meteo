@@ -13,7 +13,7 @@ const SelectCities: React.FC<CitiesSelectProps> = ({ onLocationChange }) => {
   // Handle selecting a city
   const handleCitySelect = (city: SelectedLocation) => {
     onLocationChange(city);
-    navigate(`/city-meteo/${city.name}`);
+    navigate(`/${city.name}`);
   };
 
   // Handle changes in the city select dropdown

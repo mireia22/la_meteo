@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const CustomBtn = styled.button`
   padding: 0.2rem;
   border: none;
-  background: transparent;
+  background: black;
   cursor: pointer;
   align-self: center;
   border-radius: 6px;
@@ -13,6 +13,7 @@ export const CustomBtn = styled.button`
     position: fixed;
     bottom: 3rem;
     right: 1rem;
+    background-color: transparent;
   }
 
   &.theme {
