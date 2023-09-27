@@ -1,6 +1,6 @@
 # Weather App 🌦️
 
-<p >
+<p align="center">
   <img src="/public/assets/images/preview.jpg" alt="App preview" width="300" />
 </p>
 
