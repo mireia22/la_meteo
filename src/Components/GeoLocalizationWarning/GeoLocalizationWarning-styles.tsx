@@ -8,8 +8,12 @@ export const GeoWarningWrapper = styled.div`
   min-height: 100vh;
   color: var(--font);
   background-color: var(--warm-dark);
-
   gap: 0.8rem;
+  > p {
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
   > span {
     font-weight: bold;
     padding: 0.3rem;
@@ -17,11 +21,6 @@ export const GeoWarningWrapper = styled.div`
     color: var(--warm-medium);
     background-color: var(--font);
     font-size: 1.2rem;
-    letter-spacing: 1px;
-  }
-  > p {
-    text-align: center;
-    font-weight: bold;
     letter-spacing: 1px;
   }
 `;

@@ -1,20 +1,14 @@
+import { useWeatherDataContext } from "../../Context/WeatherDataContext";
+import { WeatherContextType } from "../../Types/WeatherTypes";
 import {
   SingleLocationWrp,
   WeatherIcon,
   MinMaxTempWrp,
 } from "./MeteoTemplate-styles";
 
-type WeatherData = {
-  cityName: string | null;
-  weatherDescription: string | null;
-  windSpeed: number | null;
-  weatherIcon: string | null;
-  temperature: number | null;
-  temp_max: number | null;
-  temp_min: number | null;
-};
+const MeteoTemplate = () => {
+  const { weatherData } = useWeatherDataContext() as WeatherContextType;
 
-const MeteoTemplate = ({ weatherData }: { weatherData: WeatherData }) => {
   const toCelsius = (kelvin: number) => (kelvin - 273.15).toFixed(1) + "°";
 
   return (

@@ -5,16 +5,15 @@ type CustomButtonProps = {
   variant?: string;
   onClick: () => void;
 };
+
 const CustomButton: React.FC<CustomButtonProps> = ({
   children,
   variant,
   onClick,
-}) => {
-  return (
-    <CustomBtn className={variant} onClick={onClick}>
-      {children}
-    </CustomBtn>
-  );
-};
+}) => (
+  <CustomBtn className={variant} onClick={onClick}>
+    {children}
+  </CustomBtn>
+);
 
 export default CustomButton;

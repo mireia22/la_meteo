@@ -1,32 +1,25 @@
-// App.js
 import { Route, Routes } from "react-router-dom";
-import { useState, useEffect, lazy, Suspense } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { ThemeProvider } from "styled-components";
 import { AppWrp, MainWrp } from "./App-styles";
 import { WeatherDataProvider } from "./Context/WeatherDataContext";
 import Header from "./Components/Header/Header";
 import Footer from "./Components/Footer/Footer";
 import ThemeSwitch from "./Components/ThemeSwitch/Theme-switch";
+import { THEME_DATA } from "./Constants/Constants";
+import HomeMeteo from "./Pages/HomeMeteo/HomeMeteo";
+import HomeForecast from "./Pages/HomeForecast/HomeForecast";
+import CityMeteo from "./Pages/CityMeteo/CityMeteo";
+import CityForecast from "./Pages/CityForecast/CityForecast";
+import Loader from "./Components/Loader/Loader";
 
-const themes = {
-  warm: {
-    backgroundImage: 'url("/assets/images/warm-background.jpg")',
-  },
-  cold: {
-    backgroundImage: 'url("/assets/images/cold-background.jpg")',
-  },
-};
-
-const HomeMeteo = lazy(() => import("./Pages/HomeMeteo/HomeMeteo"));
-const HomeForecast = lazy(() => import("./Pages/HomeForecast/HomeForecast"));
-const CityMeteo = lazy(() => import("./Pages/CityMeteo/CityMeteo"));
-const CityForecast = lazy(() => import("./Pages/CityForecast/CityForecast"));
-
-function App() {
+const App = () => {
   const [theme, setTheme] = useState<"warm" | "cold">("warm");
-  useEffect(() => {
-    const localTheme = window.localStorage.getItem("theme");
 
+  useEffect(() => {
+    // Load theme preference from local storage if available
+    const localTheme = window.localStorage.getItem("theme");
+    // Set theme/default theme and store it in local storage
     if (localTheme) {
       setTheme(localTheme as "warm" | "cold");
     } else {
@@ -35,19 +28,26 @@ function App() {
     }
   }, []);
 
+  // Toggle theme between "warm" and "cold", also in localstorage
   const toggleTheme = () => {
     const newTheme = theme === "warm" ? "cold" : "warm";
     setTheme(newTheme);
     window.localStorage.setItem("theme", newTheme);
   };
 
+  // Find theme data based on the current theme
+  const selectedThemeData = THEME_DATA.find((item) => item.name === theme);
+
   return (
-    <ThemeProvider theme={themes[theme]}>
+    // Provide the selected theme's background image
+    <ThemeProvider
+      theme={{ backgroundImage: selectedThemeData?.backgroundImage }}
+    >
       <AppWrp>
         <WeatherDataProvider>
           <Header />
           <MainWrp>
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<Loader />}>
               <Routes>
                 <Route path="/" element={<HomeMeteo />} />
                 <Route path="/homeforecast" element={<HomeForecast />} />
@@ -61,10 +61,13 @@ function App() {
           </MainWrp>
           <Footer />
         </WeatherDataProvider>
-        <ThemeSwitch toggleTheme={toggleTheme} currentTheme={theme} />
+        <ThemeSwitch
+          toggleTheme={toggleTheme}
+          currentTheme={selectedThemeData}
+        />
       </AppWrp>
     </ThemeProvider>
   );
-}
+};
 
 export default App;

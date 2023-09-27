@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
-export const SelectAndBtnWrp = styled.div`
+export const CityMeteoWrp = styled.div`
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 1rem;
 `;

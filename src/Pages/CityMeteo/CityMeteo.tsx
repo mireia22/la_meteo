@@ -1,21 +1,13 @@
 import MeteoTemplate from "../../Templates/MeteoTemplate/MeteoTemplate";
-import { useWeatherDataContext } from "../../Context/WeatherDataContext";
 import ForecastResumeTemplate from "../../Templates/ForecastResumeTemplate/ForecastResumeTemplate";
-import { SelectAndBtnWrp } from "./CityMeteo-styles";
-import { WeatherContextType } from "../../Context/WeatherDataContext";
+import { CityMeteoWrp } from "./CityMeteo-styles";
+
 const CityMeteo = () => {
-  const { weatherData, forecastData } =
-    useWeatherDataContext() as WeatherContextType;
-
   return (
-    <div>
-      <SelectAndBtnWrp></SelectAndBtnWrp>
-
-      <MeteoTemplate weatherData={weatherData} />
-      <div>
-        <ForecastResumeTemplate forecastData={forecastData} />{" "}
-      </div>
-    </div>
+    <CityMeteoWrp>
+      <MeteoTemplate />
+      <ForecastResumeTemplate />
+    </CityMeteoWrp>
   );
 };
 

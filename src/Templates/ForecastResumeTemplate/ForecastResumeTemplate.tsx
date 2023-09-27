@@ -6,47 +6,20 @@ import {
   ForecastSingleDayWrp,
 } from "../ForecastResumeTemplate/ForecastResumeTemplate-styles";
 import { useNavigate } from "react-router-dom";
-import {
-  WeatherContextType,
-  useWeatherDataContext,
-} from "../../Context/WeatherDataContext";
+import { useWeatherDataContext } from "../../Context/WeatherDataContext";
 import { CustomBtn } from "../../Components/CustomButton/CustomButton-styles";
+import { WeatherContextType } from "../../Types/WeatherTypes";
+import useTemperatureConversion from "../../Hooks/useTemperatureConversion";
 
-type ForecastData = {
-  day: string | null;
-  time: string | null;
-  weatherIcon: string | null;
-  temperature: number | null;
-};
-
-type GroupedForecastData = {
-  [date: string]: ForecastData[];
-};
-const ForecastResumeTemplate = ({
-  forecastData,
-}: {
-  forecastData: ForecastData[];
-}) => {
-  const groupedForecastData: GroupedForecastData = {};
-  const { selectedLocation } = useWeatherDataContext() as WeatherContextType;
-
-  for (const forecastItem of forecastData) {
-    const date = new Date(forecastItem.day ?? "");
-    const formattedDate = format(date, "MMMM do");
-    if (!groupedForecastData[formattedDate]) {
-      groupedForecastData[formattedDate] = [];
-    }
-    groupedForecastData[formattedDate].push(forecastItem);
-  }
-  const toCelsius = (kelvin: number | null) =>
-    ((kelvin ?? 0) - 273.15).toFixed(1) + "°";
+const ForecastResumeTemplate = () => {
+  const { forecastData, selectedLocation } =
+    useWeatherDataContext() as WeatherContextType;
+  const navigate = useNavigate();
+  const toCelsius = useTemperatureConversion();
 
   const forecastData12h = forecastData.filter(
-    (forecastItem: ForecastData) =>
-      new Date(forecastItem.time ?? "").getHours() === 12
+    (forecastItem) => new Date(forecastItem.time ?? "").getHours() === 12
   );
-
-  const navigate = useNavigate();
 
   const goToForecastDate = () => {
     if (selectedLocation) {
@@ -60,7 +33,7 @@ const ForecastResumeTemplate = ({
   return (
     <ForecastResumeWrp>
       <ForecastDaysWrp>
-        {forecastData12h.map((forecastItem: ForecastData, index: number) => (
+        {forecastData12h.map((forecastItem, index: number) => (
           <ul key={index}>
             <ForecastSingleDayWrp>
               <p>{format(new Date(forecastItem.day ?? ""), "eee")}</p>

@@ -1,80 +1,33 @@
-import React, {
+import {
   createContext,
   useContext,
   useState,
   useEffect,
   useCallback,
 } from "react";
-import { CITIES_ARRAY } from "../Data/CitiesArray";
-import { WeatherIcons, DEFAULT_ICON } from "../Data/WeatherIcons";
+import { format } from "date-fns";
+
+import {
+  CITIES_ARRAY,
+  DEFAULT_ICON,
+  WEATHER_ICONS,
+} from "../Constants/Constants";
 import GeoLocalizationWarning from "../Components/GeoLocalizationWarning/GeoLocalizationWarning";
 import Loader from "../Components/Loader/Loader";
-
-//TYPES
-type WeatherProps = {
-  children: React.ReactNode;
-};
-
-type Location = {
-  lat: number | null;
-  lon: number | null;
-};
-
-type WeatherData = {
-  cityName: string | null;
-  weatherDescription: string | null;
-  windSpeed: number | null;
-  weatherIcon: string | null;
-  temperature: number | null;
-  temp_max: number | null;
-  temp_min: number | null;
-};
-
-type ForecastData = {
-  day: string | null;
-  time: string | null;
-  weatherIcon: string | null;
-  temperature: number | null;
-};
-
-type ForecastItem = {
-  dt_txt: string | null;
-  main: {
-    temp: number | null;
-  } | null;
-  weather:
-    | {
-        description: string | null;
-      }[]
-    | null;
-};
-
-type SelectedLocation = {
-  lat: number;
-  lon: number;
-  index: string;
-  name: string;
-};
-
-export type WeatherContextType = {
-  location: Location;
-  setLocation: React.Dispatch<React.SetStateAction<Location>>;
-  selectedLocation: SelectedLocation | null;
-  setSelectedLocation: React.Dispatch<
-    React.SetStateAction<SelectedLocation | null>
-  >;
-  weatherData: WeatherData;
-  setWeatherData: React.Dispatch<React.SetStateAction<WeatherData>>;
-  forecastData: ForecastData[];
-  setForecastData: React.Dispatch<React.SetStateAction<ForecastData[]>>;
-  fetchData: (url: string, dataType: "meteo" | "forecast") => Promise<void>;
-  apiKey: string;
-  loading: boolean;
-};
+import {
+  WeatherProps,
+  Location,
+  WeatherData,
+  ForecastData,
+  ForecastItem,
+  SelectedLocation,
+  WeatherContextType,
+  GroupedForecastData,
+} from "../Types/WeatherTypes";
 
 //CONSTANTS
 const apiKey = import.meta.env.VITE_API_KEY;
-const API_BASE_URL = "https://api.openweathermap.org/data/2.5";
+export const API_BASE_URL = "https://api.openweathermap.org/data/2.5";
 
 //CONTEXT
 export const WeatherDataContext = createContext<WeatherContextType | null>(
@@ -98,10 +51,9 @@ export const WeatherDataProvider = ({ children }: WeatherProps) => {
     useState<SelectedLocation | null>(null);
   const [forecastData, setForecastData] = useState<ForecastData[]>([]);
   const [loading, setLoading] = useState(true);
-
   //GET SPECIFIC ICONS
   const getWeatherIcon = (description: string) => {
-    const matchingIcon = WeatherIcons.find(
+    const matchingIcon = WEATHER_ICONS.find(
       (icon) => icon.weatherDescription === description
     );
     return matchingIcon ? matchingIcon.icon : DEFAULT_ICON;
@@ -157,7 +109,6 @@ export const WeatherDataProvider = ({ children }: WeatherProps) => {
     },
     []
   );
-
   //LAT AND LON: SELECTED LOCATION ||  GEOLOCALIZATION
   useEffect(() => {
     if (selectedLocation) {
@@ -212,6 +163,21 @@ export const WeatherDataProvider = ({ children }: WeatherProps) => {
     }
   }, [location, selectedLocation]);
 
+  //GROUPED FORECAST DATA
+  const groupedForecastData: GroupedForecastData = {};
+
+  const groupForecastDataByDate = () => {
+    for (const forecastItem of forecastData) {
+      const date = new Date(forecastItem.day ?? "");
+      const formattedDate = format(date, "EE do");
+      if (!groupedForecastData[formattedDate]) {
+        groupedForecastData[formattedDate] = [];
+      }
+      groupedForecastData[formattedDate].push(forecastItem);
+    }
+  };
+  groupForecastDataByDate();
+
   //SHARED STATE
   const sharedState = {
     location,
@@ -225,6 +191,7 @@ export const WeatherDataProvider = ({ children }: WeatherProps) => {
     fetchData,
     apiKey,
     loading,
+    groupedForecastData,
   };
 
   return (

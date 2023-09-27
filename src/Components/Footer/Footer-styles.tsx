@@ -13,7 +13,7 @@ export const FooterWrp = styled.footer`
   }
 `;
 
-export const AncoreWrp = styled.div`
+export const AnchorWrp = styled.div`
   display: flex;
   gap: 0.5rem;
 

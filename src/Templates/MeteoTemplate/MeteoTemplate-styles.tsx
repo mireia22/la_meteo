@@ -20,7 +20,6 @@ export const SingleLocationWrp = styled.div`
 
   > p {
     font-weight: bold;
-    color: white;
   }
 `;
 
@@ -29,7 +28,7 @@ export const MinMaxTempWrp = styled.div`
   align-items: center;
   gap: 3rem;
   > p {
-    color: var(--warm-medium);
+    font-weight: bold;
   }
 `;
 
