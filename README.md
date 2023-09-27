@@ -1,27 +1,49 @@
-# React + TypeScript + Vite
+# Weather App 🌦️
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<p >
+  <img src="/public/assets/images/preview.jpg" alt="App preview" width="300" />
+</p>
 
-Currently, two official plugins are available:
+## Introduction
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Welcome to the Weather App, your go-to source for weather information! This application provides real-time weather updates for various locations, helping you plan your day with confidence. Whether you're at home or traveling to a new city, the Weather App has got you covered.
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Current Weather:** Get the latest weather conditions, including temperature, humidity, wind speed, and more.
+- **5-Day Forecast:** Plan ahead with a 5-day weather forecast that includes temperature highs and lows.
+- **Location Search:** Easily find weather information for any city or location around the world.
+- **Responsive Design:** Enjoy a seamless experience on both desktop and mobile devices.
+- **Theme Switch:** Customize your experience with light and dark themes.
 
-- Configure the top-level `parserOptions` property like this:
+## Getting Started
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+### Prerequisites
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Before you begin, ensure you have met the following requirements:
+
+- **Node.js:** Make sure you have Node.js installed. You can download it [here](https://nodejs.org/).
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/your-username/weather-app.git
+
+   ```
+
+2. Clone the repository:
+   cd weather-app
+
+3. Clone the repository:
+   cd weather-app
+
+### Usage
+
+1. Start the Weather App:
+   npm start
+
+2. Open your web browser and visit http://localhost:3000.
+
+3. Use the search bar to look up weather information for your desired city or location.

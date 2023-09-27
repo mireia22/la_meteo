@@ -25,6 +25,7 @@ const HomeMeteo = () => {
       <Title>
         <h1>{weatherData.cityName?.toUpperCase()}</h1>
         <h3>Today</h3>
+        <img src="/public/assets/images/preview.jpg" alt="" />
       </Title>
       <MeteoTemplate />
       <ForecastResumeTemplate />
