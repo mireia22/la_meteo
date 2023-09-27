@@ -1,4 +1,5 @@
 import { useWeatherDataContext } from "../../Context/WeatherDataContext";
+import useTemperatureConversion from "../../Hooks/useTemperatureConversion";
 import { WeatherContextType } from "../../Types/WeatherTypes";
 import {
   SingleLocationWrp,
@@ -8,14 +9,10 @@ import {
 
 const MeteoTemplate = () => {
   const { weatherData } = useWeatherDataContext() as WeatherContextType;
-
-  const toCelsius = (kelvin: number) => (kelvin - 273.15).toFixed(1) + "°";
+  const toCelsius = useTemperatureConversion();
 
   return (
     <SingleLocationWrp>
-      <h2>{weatherData.cityName}</h2>
-      <h3>Today</h3>
-
       <h1>
         {weatherData.temperature !== null
           ? toCelsius(weatherData.temperature)

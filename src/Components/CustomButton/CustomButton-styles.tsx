@@ -34,8 +34,8 @@ export const CustomBtn = styled.button`
   }
 
   &.detailed-forecast {
-    background: rgba(189, 43, 58, 0.7);
-    border: 2px solid var(--warm-bright);
+    background: rgba(103, 16, 65, 0.7);
+    border: 2px solid var(--warm-dark);
     left: 1rem;
     padding: 0.3rem;
   }

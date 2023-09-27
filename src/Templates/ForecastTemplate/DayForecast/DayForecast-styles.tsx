@@ -1,7 +1,21 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+    
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+
+  }
+`;
 export const SingleDayForecast = styled.ul`
   background-color: rgba(251, 253, 255, 0.3);
+  transition: background-image 0.5s ease;
+  animation: ${fadeIn} 0.5s ease;
   border-radius: 5px;
   padding: 0.2rem;
   border: 2px solid white;

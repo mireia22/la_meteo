@@ -8,11 +8,8 @@ import Footer from "./Components/Footer/Footer";
 import ThemeSwitch from "./Components/ThemeSwitch/Theme-switch";
 import { THEME_DATA } from "./Constants/Constants";
 import HomeMeteo from "./Pages/HomeMeteo/HomeMeteo";
-import HomeForecast from "./Pages/HomeForecast/HomeForecast";
-import CityMeteo from "./Pages/CityMeteo/CityMeteo";
-import CityForecast from "./Pages/CityForecast/CityForecast";
 import Loader from "./Components/Loader/Loader";
-
+import Forecast from "./Pages/Forecast/Forecast";
 const App = () => {
   const [theme, setTheme] = useState<"warm" | "cold">("warm");
 
@@ -50,11 +47,11 @@ const App = () => {
             <Suspense fallback={<Loader />}>
               <Routes>
                 <Route path="/" element={<HomeMeteo />} />
-                <Route path="/homeforecast" element={<HomeForecast />} />
-                <Route path="/city-meteo/:name" element={<CityMeteo />} />
+                <Route path="/forecast" element={<Forecast />} />
+                <Route path="/city-meteo/:name" element={<HomeMeteo />} />
                 <Route
                   path="/city-meteo/:name/forecast"
-                  element={<CityForecast />}
+                  element={<Forecast />}
                 />
               </Routes>
             </Suspense>

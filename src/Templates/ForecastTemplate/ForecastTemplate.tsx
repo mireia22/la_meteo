@@ -9,7 +9,8 @@ import { WeatherContextType } from "../../Types/WeatherTypes";
 import DayForecast from "./DayForecast/DayForecast";
 
 const ForecastTemplate = () => {
-  const { groupedForecastData } = useWeatherDataContext() as WeatherContextType;
+  const { groupedForecastData, weatherData } =
+    useWeatherDataContext() as WeatherContextType;
   const navigate = useNavigate();
   const { name } = useParams();
 
@@ -23,6 +24,7 @@ const ForecastTemplate = () => {
 
   return (
     <ForecastWrp>
+      <h1>{weatherData.cityName?.toUpperCase()}</h1>
       {Object.keys(groupedForecastData).map((formattedDate) => (
         <SingleDayWrp key={formattedDate}>
           <h4>{formattedDate}</h4>

@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const SingleHourForecast = styled.li`
   display: flex;
   flex-direction: column;
-
+  justify-content: center;
   align-items: center;
   color: black;
   border-radius: 5px;

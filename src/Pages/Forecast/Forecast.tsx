@@ -1,7 +1,7 @@
 import ForecastTemplate from "../../Templates/ForecastTemplate/ForecastTemplate";
 
-const CityForecast = () => {
+const Forecast = () => {
   return <ForecastTemplate />;
 };
 
-export default CityForecast;
+export default Forecast;

@@ -12,23 +12,12 @@ import { WeatherContextType } from "../../Types/WeatherTypes";
 import useTemperatureConversion from "../../Hooks/useTemperatureConversion";
 
 const ForecastResumeTemplate = () => {
-  const { forecastData, selectedLocation } =
-    useWeatherDataContext() as WeatherContextType;
-  const navigate = useNavigate();
+  const { forecastData } = useWeatherDataContext() as WeatherContextType;
   const toCelsius = useTemperatureConversion();
 
   const forecastData12h = forecastData.filter(
     (forecastItem) => new Date(forecastItem.time ?? "").getHours() === 12
   );
-
-  const goToForecastDate = () => {
-    if (selectedLocation) {
-      const name = selectedLocation.name;
-      navigate(`/city-meteo/${name}/forecast`);
-    } else {
-      navigate("/homeforecast");
-    }
-  };
 
   return (
     <ForecastResumeWrp>
@@ -47,9 +36,6 @@ const ForecastResumeTemplate = () => {
           </ul>
         ))}
       </ForecastDaysWrp>
-      <CustomBtn className="detailed-forecast" onClick={goToForecastDate}>
-        Detailed Forecast
-      </CustomBtn>
     </ForecastResumeWrp>
   );
 };

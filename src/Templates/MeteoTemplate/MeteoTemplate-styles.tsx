@@ -1,9 +1,9 @@
 import { styled } from "styled-components";
-export const SingleLocationWrp = styled.div`
+export const SingleLocationWrp = styled.article`
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  justify-content: center;
   > h1 {
     font-size: 4rem;
     color: var(--warm-dark);
@@ -20,6 +20,10 @@ export const SingleLocationWrp = styled.div`
 
   > p {
     font-weight: bold;
+    color: var(--font);
+    padding: 0.2rem;
+    background-color: rgba(198, 40, 56, 0.5);
+    border-radius: 5px;
   }
 `;
 
@@ -29,6 +33,12 @@ export const MinMaxTempWrp = styled.div`
   gap: 3rem;
   > p {
     font-weight: bold;
+    color: var(--font);
+    padding: 0.2rem;
+    border-radius: 5px;
+    @media (min-width: 768px) {
+      color: var(--warm-dark);
+    }
   }
 `;
 
