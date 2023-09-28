@@ -8,6 +8,7 @@ export const Select = styled.select`
   color: var(--warm-dark);
   outline: none;
   font-weight: bold;
+  cursor: pointer;
 `;
 
 export const Option = styled.option`

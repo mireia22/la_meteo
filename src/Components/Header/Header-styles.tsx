@@ -6,4 +6,7 @@ export const HeaderWrp = styled.header`
   justify-content: space-between;
   align-items: center;
   height: 3rem;
+  > div {
+    cursor: pointer;
+  }
 `;
