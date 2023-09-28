@@ -36,16 +36,14 @@ const SelectCities: React.FC<CitiesSelectProps> = ({ onLocationChange }) => {
   );
 
   return (
-    <div>
-      <Select onChange={handleSelectChange}>
-        <option value="">Other Cities</option>
-        {sortedCities.map((city) => (
-          <Option key={city.index} value={city.index}>
-            {city.name}
-          </Option>
-        ))}
-      </Select>
-    </div>
+    <Select onChange={handleSelectChange}>
+      <option value="">Other Cities</option>
+      {sortedCities.map((city) => (
+        <Option key={city.index} value={city.index}>
+          {city.name}
+        </Option>
+      ))}
+    </Select>
   );
 };
 

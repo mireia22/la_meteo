@@ -7,6 +7,8 @@ export const HeaderWrp = styled.header`
   align-items: center;
   height: 3rem;
   > div {
-    cursor: pointer;
+    > img {
+      cursor: pointer;
+    }
   }
 `;
