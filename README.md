@@ -1,12 +1,18 @@
-# Weather App 🌦️
+# Weather App 🌤️
 
-<p >
+<p align="center">
   <img src="/public/assets/images/preview.jpg" alt="App preview" width="300" />
 </p>
 
 ## Introduction
 
 Welcome to the Weather App, your go-to source for weather information! This application provides real-time weather updates for various locations, helping you plan your day with confidence. Whether you're at home or traveling to a new city, the Weather App has got you covered.
+
+## Technologies Used
+- **React:** The front-end of this application is built using the popular JavaScript library React, ensuring a dynamic and interactive user interface.
+- **TypeScript:** TypeScript brings strong typing and improved code maintainability to the Weather App, enhancing overall development quality.
+- **Styled-Components:**  Styling is achieved with Styled-Components, allowing for a modern and maintainable approach to CSS.
+- **Date-fns:**  Date-fns is used for date formatting and manipulation, ensuring accurate and user-friendly date displays.
 
 ## Features
 
@@ -33,17 +39,29 @@ Before you begin, ensure you have met the following requirements:
 
    ```
 
-2. Clone the repository:
+2. Navigate to the project directory:
+   
+    ```bash
    cd weather-app
 
-3. Clone the repository:
-   cd weather-app
+     ```
+
+4. Install the necessary dependencies::
+
+   ```bash
+   npm install
+  
+   ```
 
 ### Usage
 
 1. Start the Weather App:
+
+   ```bash
    npm start
 
-2. Open your web browser and visit http://localhost:3000.
+   ```
 
-3. Use the search bar to look up weather information for your desired city or location.
+3. Open your web browser and visit http://localhost:3000.
+
+4. Use the search bar to look up weather information for your desired city or location.
